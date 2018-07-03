@@ -15,6 +15,10 @@ VPNID="UGR"
 # UGR email address
 EMAILADDRESS="example@correo.ugr.es"
 ```
+You also have to give execute permission to the script:
+```console
+foo@bar:~$ chmod +x convpnUGR
+```
 
 After this, you should be able to connect to the VPN by running the script:
 ```console
