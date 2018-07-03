@@ -38,4 +38,5 @@ echo "VPN password: "$VPNPASS
 
 # Set the VPN password 
 nmcli con mod --temporary $VPNID vpn.secrets "password=$VPNPASS"
-# Start VPN connection nmcli con up id UGR 
+# Start VPN connection nmcli con up id UGR
+nmcli con up id $VPNID
