@@ -1,0 +1,41 @@
+#!/bin/bash
+#
+# Script name: convpnUGR
+# 
+# Author: Rubén Hurtado Gutiérrez
+# Date: 2018-07-03
+#
+# Description: The following script retrieves the UGR VPN password from
+#              a valid email address and its password, and activates
+#              the connection in NetworkManager.
+#              This script requires the connection to be already
+#              set up, with the option to store the password activated.
+#              Your UGR email address and VPN connection name in 
+#              NetworkManger must be specified in the variables 
+#              EMAILADDRESS and VPNID.
+# 
+#              Indications for setting the connection can be found here:
+#              https://csirc.ugr.es/informatica/RedUGR/VPN/ConfVPN/VPN-Linux.html
+#
+
+# VPN name in NetworkManager
+VPNID="UGR"
+# UGR email address
+EMAILADDRESS="example@correo.ugr.es"
+
+# Ask for the email password
+read -sp "UGR email password: " EMAILPASS
+echo " " # Linebreak
+
+# Dirty way of requesting and extracting the temporary VPN password
+EMAILADDRESS_ESCAPED=${EMAILADDRESS//./\\.}
+EMAILADDRESS_ESCAPED=${EMAILADDRESS_ESCAPED//@/\\@}
+VPNPASS=$(curl -s --data "user=$EMAILADDRESS&pass=$EMAILPASS" https://vpn.ugr.es | perl -0777 -ne "/(?<=$EMAILADDRESS_ESCAPED\&p\=).*(?=Acceso)/s;print $&;")
+VPNPASS="${VPNPASS%???}"
+
+# Show the VPN password
+echo "VPN password: "$VPNPASS
+
+# Set the VPN password 
+nmcli con mod --temporary $VPNID vpn.secrets "password=$VPNPASS"
+# Start VPN connection nmcli con up id UGR 
