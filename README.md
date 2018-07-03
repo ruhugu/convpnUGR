@@ -24,7 +24,7 @@ VPN password: m_cz=45cnWxW
 VPN connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/150)
 ```
 
-If you want to be able to run the script from anywhere (not just the script folder), copy it to "/usr/local/bin/". Then you will be able to connect to the vpn using:
+If you want to be able to run the script from anywhere (not just the script folder), copy it to "/usr/local/bin/". Then you will be able to connect to the VPN using:
 ```console
 foo@bar:~$ convpnUGR
 ```
