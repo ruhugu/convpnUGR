@@ -1,5 +1,5 @@
 # convpnUGR
-Bash script to connect to the University of Granada (UGR) VPN server. It retrieves the temporary VPN password automatically, making the connection process quicker and easier.
+Bash script to connect to the University of Granada (UGR) VPN server. It retrieves the temporary VPN password automatically, making the connection process quicker and easier and avoiding the need for third party programs. 
 
 ## Configuration
 Before using the script the VPN connection must be set up. Instructions can be found at the [CSIRC webpage](https://csirc.ugr.es/informatica/RedUGR/VPN/ConfVPN/VPN-Linux.html).
@@ -15,7 +15,7 @@ VPNID="UGR"
 # UGR email address
 EMAILADDRESS="example@correo.ugr.es"
 ```
-You also have to give execute permission to the script:
+You also have to give execution permission to the script:
 ```console
 foo@bar:~$ chmod +x convpnUGR
 ```
@@ -28,7 +28,7 @@ VPN password: m_cz=45cnWxW
 VPN connection successfully activated (D-Bus active path: /org/freedesktop/NetworkManager/ActiveConnection/150)
 ```
 
-If you want to be able to run the script from anywhere (not just the script folder), copy it to "/usr/local/bin/". Then you will be able to connect to the VPN using:
+If you want to be able to run the script from anywhere (not just the script folder), just copy it to "/usr/local/bin/". Then you will be able to connect to the VPN using:
 ```console
 foo@bar:~$ convpnUGR
 ```
